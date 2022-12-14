@@ -54,7 +54,7 @@ function hook_dlopen()
             {
                 if (this.is_can_hook)
                 {
-                    modifyUnityLua();
+                    dumpUnityLua();
                     console.log("dlopen finish...");
                 }
             }
@@ -82,7 +82,7 @@ function hook_dlopen()
             {
                 if (this.is_can_hook)
                 {
-                    modifyUnityLua();
+                    dumpUnityLua();
                     console.log("android_dlopen_ext  finish...");
                 }
             }
