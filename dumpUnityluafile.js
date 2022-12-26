@@ -114,7 +114,7 @@ function modifyUnityLua()
                         //打印出想改的文件的字节码，打印出来后，复制到 icyberchef ,转换为16进制码，
                         //再保存到010，再修改，注意字节码长度要一样（增加或删掉的字节码会导致文件长度不一样），否则可能出错
                         //可以利用里面的注释补齐字节码
-                        /*console.log(hexdump(args[1].add(0x10),
+                        /*console.log(hexdump(args[1].add(is32),
                            {
                                offset: 0,
                                length: size,
@@ -125,7 +125,7 @@ function modifyUnityLua()
 
                         //需要保证写入的文件和原文件的长度必须一致，否则可能出错
                         //也就是参数中的 size ，和写入的 mybuff 长度必须一致
-                        Memory.writeByteArray(args[1].add(0x10), mybuff);
+                        Memory.writeByteArray(args[1].add(is32), mybuff);
                     }
 
                 },
@@ -153,8 +153,8 @@ function dumpUnityLua()
             {
                 onEnter: function (args)
                 {
-                    var size = args[2].add(is32).toInt32();//如果游戏是64位的，这里可能要加0x10
-                    var name = args[3].add(is32).readUtf16String();//如果游戏是64位的，这里可能要加0x10
+                    var size = args[2].add(is32).toInt32();
+                    var name = args[3].add(is32).readUtf16String();
                     console.log("size: " + size);
                     console.log("name: " + name);
                     if (name.indexOf("/") >= 0)
